@@ -1,2 +1,6 @@
 Django==3.1
+<<<<<<< HEAD
 django-grappelli==2.14.2
+=======
+django-grappelli==2.14.2
+>>>>>>> 9befb75439dcf0fc16635c0950dad2e9ff2c35f4
