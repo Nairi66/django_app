@@ -9,6 +9,7 @@
 
 		{% for a in latest_articles_list %}
 			<a href="{% url 'articles:detail' a.id %}"><br>{{a.article_title}}</a>
+			
 		{% endfor %}
 
 	{% else %}

@@ -4,12 +4,12 @@
 {% block title %}{{article.article_title}}{% endblock %}
 
 {% block content %}
-
+	
 	<h2>{{article.article_title}}</h2>
 	<p>{{article.article_text}}</p>
 	<em>{{article.pub_date}}</em>
 	{% if article.was_published_recently %}
-	<b style="color: red">NEW ARCTICLE!!!</b>
+	<b style="color: red">ՆՈՐ!!!</b>
 	{% endif %}
 	<hr>
 
@@ -19,7 +19,7 @@
 
 				<p>
 					<strong>{{c.author_name}}</strong>
-					<p>{{c.comment_text}}</p>
+					<pre>{{c.comment_text}}</pre>
 				</p>
 
 			{% endfor %}
@@ -35,10 +35,51 @@
 	<form action="{% url 'articles:leave_comment' article.id %}" method="post">
 
 		{% csrf_token %}
+			<div class="row justify-content-center">
+				<div class="col-12 col-md-8 col-lg-6 pb-5">
 
-		<input type="text" name="name" placeholder="your name" required><br>
-		<textarea name="text" cols="30" rows="10" required placeholder="your comment"></textarea><br>
-		<button type="submit">Leave Comment</button>
+
+		                    <!--Form with header-->
+
+		                    <form action="mail.php" method="post">
+		                        <div class="card border-primary rounded-0">
+		                            <div class="card-header p-0">
+		                                <div class="bg-info text-white text-center py-2">
+		                                    <h3><i class="fa fa-envelope"></i> Թողնել մեկնաբանություն</h3>
+		                                </div>
+		                            </div>
+		                            <div class="card-body p-3">
+
+		                                <!--Body-->
+		                                <div class="form-group">
+		                                    <div class="input-group mb-2">
+		                                        <div class="input-group-prepend">
+		                                            <div class="input-group-text"><i class="fa fa-user text-info"></i></div>
+		                                        </div>
+		                                        <input type="text" class="form-control" id="nombre" name="name" placeholder="Գրեք Ձեր անունը" required>
+		                                    </div>
+		                                </div>
+		                                <div class="form-group">
+		                                    <div class="input-group mb-2">
+		                                        <div class="input-group-prepend">
+		                                            <div class="input-group-text"><i class="fa fa-envelope text-info"></i></div>
+		                                        </div>
+		                                        <textarea class="form-control" name="text" placeholder="Գրեք Ձեր մեկնաբանությունը" required></textarea>
+		                                    </div>
+		                                </div>
+		                                <div class="text-center">
+		                                    <button type="submit" class="btn btn-info btn-block rounded-0 py-2">Ուղարկել</button>
+		                                </div>
+		                            </div>
+
+		                        </div>
+		                    </form>
+		                    <!--Form with header-->
+
+
+		                </div>
+			</div>
+		</div>
 	</form>
 	
 {% endblock %}
